@@ -13,16 +13,16 @@ export default function ContactPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
-  
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
-  
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate API call
     setTimeout(() => {
       setIsSubmitting(false);
@@ -33,36 +33,36 @@ export default function ContactPage() {
         subject: "",
         message: ""
       });
-      
+
       // Reset success message after 5 seconds
       setTimeout(() => {
         setSubmitSuccess(false);
       }, 5000);
     }, 1500);
   };
-  
+
   return (
     <div className="container mx-auto py-12 px-4">
       <h1 className="text-3xl font-bold mb-8">Contact Us</h1>
-      
+
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2">
           <HydrationSafe className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
             <h2 className="text-xl font-semibold mb-6">Send Us a Message</h2>
-            
+
             {submitSuccess && (
               <div className="bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 p-4 rounded-md mb-6 flex items-center">
                 <Check size={20} className="mr-2 flex-shrink-0" />
                 <span>Your message has been sent successfully. We'll get back to you soon!</span>
               </div>
             )}
-            
+
             {isSubmitting && (
               <div className="absolute inset-0 bg-white/50 dark:bg-black/50 flex items-center justify-center">
                 <div className="animate-spin rounded-full h-8 w-8 border-2 border-primary-600 border-t-transparent" />
               </div>
             )}
-            
+
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
@@ -94,7 +94,7 @@ export default function ContactPage() {
                   />
                 </div>
               </div>
-              
+
               <div>
                 <label htmlFor="subject" className="block text-sm font-medium mb-1">
                   Subject <span className="text-red-500">*</span>
@@ -109,7 +109,7 @@ export default function ContactPage() {
                   className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:bg-gray-800"
                 />
               </div>
-              
+
               <div>
                 <label htmlFor="message" className="block text-sm font-medium mb-1">
                   Message <span className="text-red-500">*</span>
@@ -124,7 +124,7 @@ export default function ContactPage() {
                   className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:bg-gray-800"
                 ></textarea>
               </div>
-              
+
               <button
                 type="submit"
                 disabled={isSubmitting}
@@ -132,7 +132,9 @@ export default function ContactPage() {
               >
                 {isSubmitting ? (
                   <>
-                    <HydrationSafe className="animate-spin mr-2 h-4 w-4 border-2 border-white border-t-transparent rounded-full" />
+                    <HydrationSafe className="animate-spin ...">
+                      <div className="w-4 h-4 rounded-full border-2 border-white border-t-transparent animate-spin" />
+                    </HydrationSafe>
                     Sending...
                   </>
                 ) : (
@@ -145,11 +147,11 @@ export default function ContactPage() {
             </form>
           </HydrationSafe>
         </div>
-        
+
         <div>
           <HydrationSafe className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 mb-6">
             <h2 className="text-xl font-semibold mb-6">Contact Information</h2>
-            
+
             <div className="space-y-4">
               <div className="flex items-start">
                 <MapPin size={20} className="mr-3 text-primary-600 flex-shrink-0 mt-1" />
@@ -162,7 +164,7 @@ export default function ContactPage() {
                   </p>
                 </div>
               </div>
-              
+
               <div className="flex items-start">
                 <Phone size={20} className="mr-3 text-primary-600 flex-shrink-0 mt-1" />
                 <div>
@@ -172,7 +174,7 @@ export default function ContactPage() {
                   </p>
                 </div>
               </div>
-              
+
               <div className="flex items-start">
                 <Mail size={20} className="mr-3 text-primary-600 flex-shrink-0 mt-1" />
                 <div>
@@ -182,7 +184,7 @@ export default function ContactPage() {
                   </p>
                 </div>
               </div>
-              
+
               <div className="flex items-start">
                 <Clock size={20} className="mr-3 text-primary-600 flex-shrink-0 mt-1" />
                 <div>
@@ -196,10 +198,10 @@ export default function ContactPage() {
               </div>
             </div>
           </HydrationSafe>
-          
+
           <HydrationSafe className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
             <h2 className="text-xl font-semibold mb-6">Follow Us</h2>
-            
+
             <div className="flex space-x-4">
               <a href="#" className="bg-gray-100 dark:bg-gray-700 p-3 rounded-full hover:bg-primary-100 dark:hover:bg-primary-900/20 transition-colors">
                 <svg className="w-5 h-5 text-gray-700 dark:text-gray-300" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -225,17 +227,17 @@ export default function ContactPage() {
           </HydrationSafe>
         </div>
       </div>
-      
+
       <div className="mt-12">
         <HydrationSafe className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
           <h2 className="text-xl font-semibold mb-6">Find Us</h2>
           <div className="h-96 w-full rounded-lg overflow-hidden">
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.00425882426698!3d40.74076684331839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1629321204333!5m2!1sen!2sus" 
-              width="100%" 
-              height="100%" 
-              style={{ border: 0 }} 
-              allowFullScreen 
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.00425882426698!3d40.74076684331839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1629321204333!5m2!1sen!2sus"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
               loading="lazy"
             ></iframe>
           </div>
