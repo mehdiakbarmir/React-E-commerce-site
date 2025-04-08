@@ -92,7 +92,8 @@ export default function ProductDetailPage() {
         <div className="w-full lg:w-1/2">
           <div className="flex flex-col-reverse md:flex-row gap-4">
             <div className="flex md:flex-col gap-2 mt-4 md:mt-0">
-              {product.images.map((image, index) => (
+            {product.images && product.images.length > 0 ? (
+              product.images.map((image, index) => (
                 <button
                   key={index}
                   onClick={() => setSelectedImage(index)}
@@ -109,7 +110,10 @@ export default function ProductDetailPage() {
                     className="object-cover"
                   />
                 </button>
-              ))}
+              ))
+            ) : (
+              <p>No images available.</p>
+            )}
             </div>
             
             <div className="relative aspect-square w-full rounded-lg overflow-hidden">
