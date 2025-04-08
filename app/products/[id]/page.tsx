@@ -143,7 +143,7 @@ export default function ProductDetailPage() {
                 <Star
                   key={i}
                   size={18}
-                  className={i < Math.floor(product.rating) ? "text-yellow-400 fill-yellow-400" : i < product.rating ? "text-yellow-400 fill-yellow-400 half-filled" : "text-gray-300"}
+                  className={i < Math.floor(product.rating ?? 0) ? "text-yellow-400 fill-yellow-400" : i < (product.rating ?? 0) "text-yellow-400 fill-yellow-400 half-filled" : "text-gray-300"}
                 />
               ))}
             </div>
