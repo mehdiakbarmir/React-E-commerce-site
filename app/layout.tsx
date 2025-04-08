@@ -13,7 +13,7 @@ import BackToTop from "@/components/BackToTop";
 import CartDrawer from "@/components/CartDrawer";
 
 // Suppress hydration warnings when browser extensions modify the DOM
-// @ts-expect-error - React doesn't have this type yet
+React.useLayoutEffect = React.useEffect;
 React.useLayoutEffect = React.useEffect;
 
 // Add this to suppress hydration warnings globally
