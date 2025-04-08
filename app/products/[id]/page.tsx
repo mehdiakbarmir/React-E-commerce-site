@@ -118,7 +118,7 @@ export default function ProductDetailPage() {
             
             <div className="relative aspect-square w-full rounded-lg overflow-hidden">
               <Image
-                src={product.images[selectedImage]}
+                src={product.images![selectedImage]}
                 alt={product.name}
                 fill
                 className="object-cover"
